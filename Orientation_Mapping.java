@@ -1,6 +1,7 @@
 import ij.*;
 import ij.process.*;
 import ij.gui.*;
+import ij.io.*;
 import java.io.*;
 import java.util.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   This ImageJ plugin allows to create RGB maps for grains with different
   orientations in HRTEM images of polycristalline samples.
   
-  Version: 1.0 (2015-02-22, 21:01 mmohn)
+  Version: 1.1 (2015-02-23, 16:30 mmohn)
   
   Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
     
@@ -41,10 +42,15 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     return DOES_32; // may be generalized to all images types: DOES_ALL
   }
   
+  // Program information
+  String pluginName = "OrientationMapping";
+  String pluginVersion = "1.1";
+  
   // Global variables & default values
   int n = 3; // number of orientations
   int m = 6; // rotational symmetry
   boolean doNormalize = true;
+  boolean saveLog = false;
   double stdDevRadius1; // radius of the stdDev filter (normalization)
   double stdDevRadius2; // radius of the stdDev filter (mapping)
   double blurRadius = 50; // radius of the Gaussian blur (normalization)
@@ -98,6 +104,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     gd.addMessage("--- B A S I C   S E T T I N G S ---");
     gd.addNumericField("Number of orientations:", n, 0);
     gd.addNumericField("Rotational symmetry:", m, 0);
+    gd.addCheckbox("Save log file", saveLog);
     gd.addMessage("--- C O N T R A S T   N O R M A L I Z A T I O N ---");
     gd.addCheckbox("Normalize contrast", doNormalize);
     gd.addNumericField("Radius for StdDev (px) [¹]:", stdDevRadius1, 2);
@@ -130,6 +137,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
       IJ.error("Input Error", "Rotational symmetry must be at least two-fold.");
       return;
     }
+    saveLog = gd.getNextBoolean();
     doNormalize = gd.getNextBoolean();
     stdDevRadius1 = gd.getNextNumber();
     blurRadius = gd.getNextNumber();
@@ -409,6 +417,37 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	new StackConverter(result).convertToGray8();
 	new ImageConverter(result).convertRGBStackToRGB();
 	result.show();
+	
+	// save log file
+	if ( saveLog ) {
+	  SaveDialog sd = new SaveDialog("Save log file", "log", ".txt");
+	  String filepath = sd.getDirectory() + sd.getFileName();
+	  try{
+	    PrintWriter pw = new PrintWriter(new FileWriter(filepath));
+	    String firstLine = pluginName + " Version " + pluginVersion + ", " + new Date().toString();
+	    pw.println(firstLine);
+	    pw.println(firstLine.replaceAll(".", "-"));
+	    pw.println("Original Image:     " + originalTitle);
+	    if (doNormalize) {
+	      pw.println("Normalization:      StdDev r = " + String.format("%,.2f", stdDevRadius1) + " px");
+	      pw.println("                    Gaussian r = " + String.format("%,.2f", blurRadius) + " px");
+	    }
+	    pw.println("Reflection:         r = " + 
+			String.format("%,.2f", r0) + " px, phi = " + String.format("%,.2f", phi0) + " deg");
+	    pw.println("Bandpass filter:    rmin = " + 
+			String.format("%,.2f", rmin) + " px, rmax = " + String.format("%,.2f", rmax) + " px");
+	    int stopHue2 = startHue + hueRange;
+	    pw.println("Colors:             " + startHue + " <= hue <= " + stopHue2);
+	    pw.println("StdDev filter:      r = " + String.format("%,.2f", stdDevRadius2) + " px");
+	    pw.close();
+	  } catch (IOException ioe) {
+	    IJ.error("Error", "Could not save file " + filepath);
+	  }
+	}
+	
+	// reset ImageJ tool and progress bar
+	IJ.setTool("rectangle");
+	IJ.showProgress(1.0);
 	
       } // END of step 3
     } // END of "if getKeyChar == ..."
