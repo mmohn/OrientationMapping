@@ -6,7 +6,9 @@ import ij.plugin.filter.*;
 
 public class Normalize {
 
-/* Methods for image (contrast) normalization, OrientationMapping Version: 1.0 (2015-02-22, 21:01 mmohn)
+/* Methods for image (contrast) normalization, OrientationMapping
+
+  Version: 1.0 (2015-02-22, 21:01 mmohn)
   
   Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
     

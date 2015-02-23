@@ -5,7 +5,9 @@ import ij.process.*;
 
 public class MapRGB {
 
-/* Methods for RGB Stacks, OrientationMapping Version: 1.0 (2015-02-22, 21:01 mmohn)
+/* Methods for RGB Stacks, OrientationMapping
+
+  Version: 1.0 (2015-02-22, 21:01 mmohn)
   
   Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
     

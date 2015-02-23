@@ -5,7 +5,9 @@ import ij.process.*;
 
 public class Padding {
 
-/* Methods for image padding for the FHT, OrientationMapping Version: 1.0 (2015-02-22, 21:01 mmohn)
+/* Methods for image padding for the FHT, OrientationMapping
+
+  Version: 1.0 (2015-02-22, 21:01 mmohn)
   
   Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
     
