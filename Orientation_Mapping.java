@@ -297,7 +297,11 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	// create filter masks and show them
 	ImageStack filterMasksIs = FilterMasks.createStack(fhtSize, fhtSize, n, m, phi0, rmin, rmax);
 	if ( showFilterMasks ) {
-	  new ImagePlus("Filter Masks for " + originalTitle, filterMasksIs).show();
+	  // filterMasksIs can't be duplicated or cloned, but duplicating the ImagePlus
+	  // prevents the displayed image from future modifications of filterMasksIs ...
+	  ImagePlus showImp = new ImagePlus("", filterMasksIs).duplicate();
+	  showImp.setTitle("Filter Masks for " + originalTitle); // image title without this line: "DUP_..."
+	  showImp.show();
 	  IJ.setMinAndMax(0, 1);
 	}
 	
@@ -368,7 +372,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	  for (int s = 1; s <= 3; s++) {
 	    mappedMasksIs.getProcessor(s).multiply(255.0/globalMaximum);
 	  }
-	  ImagePlus mappedMasksImp = new ImagePlus("", mappedMasksIs);
+	  ImagePlus mappedMasksImp = new ImagePlus("RGB Filter Mask of " + originalTitle, mappedMasksIs);
 	  new StackConverter(mappedMasksImp).convertToGray8();
 	  new ImageConverter(mappedMasksImp).convertRGBStackToRGB();
 	  mappedMasksImp.show();
@@ -390,7 +394,10 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	  mappedIs.getProcessor(s).multiply(255.0/range);
 	}
 	if ( show32bitStack ) {
-	  ImagePlus showImp4 = new ImagePlus("32bit RGB of " + originalTitle, mappedIs);
+	  // mappedIs can't be duplicated or cloned, but duplicating the ImagePlus
+	  // prevents the displayed image from future modifications of mappedIs ...
+	  ImagePlus showImp4 = new ImagePlus("", mappedIs).duplicate();
+	  showImp4.setTitle("32bit RGB Stack of " + originalTitle);
 	  showImp4.show();
 	  new ContrastEnhancer().stretchHistogram(showImp4, 0.5);
 	  showImp4.updateAndDraw();
