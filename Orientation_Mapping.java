@@ -157,7 +157,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     String firstColor = gd.getNextChoice();
     String lastColor = gd.getNextChoice();
     startHue = Arrays.asList(colorArray).indexOf(firstColor)*60;
-    stopHue = Arrays.asList(colorArray).indexOf(firstColor)*60;
+    stopHue = Arrays.asList(colorArray).indexOf(lastColor)*60;
     if (stopHue < startHue) stopHue += 360;
     hueRange = 360;
     if (stopHue != startHue) hueRange = stopHue - startHue;
