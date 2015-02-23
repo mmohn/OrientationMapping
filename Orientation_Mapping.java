@@ -288,10 +288,10 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	fhtImp.close();
 	step = 0;
 	if (stdDevRadius2 <= 0) { // estimate it
-	  stdDevRadius2 = fhtSize*1.0/r0;
+	  stdDevRadius2 = fhtSize*2.0/r0;
 	}
 	if (stdDevRadius1 <= 0) {
-	  stdDevRadius1 = fhtSize*1.0/r0;
+	  stdDevRadius1 = fhtSize*2.0/r0;
 	}
 	
 	// create filter masks and show them
