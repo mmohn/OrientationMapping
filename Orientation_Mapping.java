@@ -17,11 +17,11 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   This ImageJ plugin allows to create RGB maps for grains with different
   orientations in HRTEM images of polycrystalline samples.
   
-  Version: 1.2 (2015-02-24, 13:20 mmohn)
+  Version: 1.3 (2015-02-24, 16:09 mmohn)
   
   Dependencies:
   - mapping.MapRGB Version 1.0
-  - filters.FilterMasks Version 1.0
+  - filters.FilterMasks Version 1.1
   - filters.Normalize Version 1.0
   - filters.Padding Version 1.0
   
@@ -50,7 +50,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   
   // Program information
   String pluginName = "OrientationMapping";
-  String pluginVersion = "1.1";
+  String pluginVersion = "1.3";
   
   // Global variables & default values
   int n = 3; // number of orientations
@@ -116,7 +116,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     gd.addNumericField("Radius for StdDev (px) [¹]:", stdDevRadius1, 2);
     gd.addNumericField("Radius for Gaussian Blur (px):", blurRadius, 2);
     gd.addMessage("--- S H O W / H I D E   R E S U L T S ---");
-    String[] checkboxTitles = {"Show Normalized image", "Show filter masks", "Show Fourier filtered images", "Show filtered images", "Show 32 bit RGB stack", "Show RGB filter mask"};
+    String[] checkboxTitles = {"Show normalized image", "Show filter masks", "Show Fourier filtered images", "Show filtered images", "Show 32 bit RGB stack", "Show RGB filter mask"};
     boolean[] checkboxDefaults = {false, false, false, false, false, false};
     gd.addCheckboxGroup(3, 2, checkboxTitles, checkboxDefaults, null);
     gd.addMessage("--- C O L O R   R A N G E ---");
@@ -389,7 +389,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	  for (int s = 1; s <= 3; s++) {
 	    mappedMasksIs.getProcessor(s).multiply(1.0/globalMaximum);
 	  }
-	  ImagePlus mappedMasksImp = new ImagePlus("RGB Filter Mask of " + originalTitle, mappedMasksIs);
+	  ImagePlus mappedMasksImp = new ImagePlus("RGB Filter Mask for " + originalTitle, mappedMasksIs);
 	  new StackConverter(mappedMasksImp).convertToGray8();
 	  new ImageConverter(mappedMasksImp).convertRGBStackToRGB();
 	  mappedMasksImp.show();

@@ -7,7 +7,7 @@ public class MapRGB {
 
 /* Methods for RGB Stacks, OrientationMapping
 
-  Version: 1.0 (2015-02-22, 21:01 mmohn)
+  Version: 1.1 (2015-02-24, 16:09 mmohn)
   
   Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
     
@@ -31,9 +31,10 @@ public class MapRGB {
   public static ImageStack mapStackToRGB(ImageStack inputIs, int startHue, int hueRange) {    
     ImageStack targetIs = new ImageStack(inputIs.getWidth(), inputIs.getHeight()); // empty stack
     int n = inputIs.getSize();
+    double stepSize = (hueRange == 360) ? hueRange*1.0/n : hueRange*1.0/(n-1);
     String[] colorStr = {"Red", "Green", "Blue"};
     for (int s = 1; s <= n; s++) {
-      int hue = (int) startHue + (int) Math.round( (s-1)*hueRange*1.0/n );
+      int hue = (int) startHue + (int) Math.round( (s-1)*stepSize );
       int[] rgb = hueToRGB(hue%360);
       ImageProcessor tempIp = inputIs.getProcessor(s).duplicate(); // initialize
       for (int i = 0; i < 3; i++) {
