@@ -17,7 +17,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   This ImageJ plugin allows to create RGB maps for grains with different
   orientations in HRTEM images of polycrystalline samples.
   
-  Version: 1.1 (2015-02-23, 16:30 mmohn)
+  Version: 1.2 (2015-02-24, 13:20 mmohn)
   
   Dependencies:
   - mapping.MapRGB Version 1.0
@@ -387,7 +387,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	    globalMaximum = Math.max(globalMaximum, tempMaximum);
 	  }
 	  for (int s = 1; s <= 3; s++) {
-	    mappedMasksIs.getProcessor(s).multiply(255.0/globalMaximum);
+	    mappedMasksIs.getProcessor(s).multiply(1.0/globalMaximum);
 	  }
 	  ImagePlus mappedMasksImp = new ImagePlus("RGB Filter Mask of " + originalTitle, mappedMasksIs);
 	  new StackConverter(mappedMasksImp).convertToGray8();
@@ -408,7 +408,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 	double range = globalMax - globalMin;
 	for (int s = 1; s <= 3; s++) {
 	  mappedIs.getProcessor(s).subtract(globalMin);
-	  mappedIs.getProcessor(s).multiply(255.0/range);
+	  mappedIs.getProcessor(s).multiply(1.0/range);
 	}
 	if ( show32bitStack ) {
 	  // mappedIs can't be duplicated or cloned, but duplicating the ImagePlus
