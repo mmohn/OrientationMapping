@@ -120,10 +120,14 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     boolean[] checkboxDefaults = {false, false, false, false, false, false};
     gd.addCheckboxGroup(3, 2, checkboxTitles, checkboxDefaults, null);
     gd.addMessage("--- C O L O R   R A N G E ---");
+    gd.addMessage("The used colors are picked at equal distances along the\n"
+		  +"color range limited by the selected start and end values.");
     String[] colorArray = {"red", "yellow", "green", "cyan", "blue", "magenta"};
     String defaultColor = colorArray[0];
     gd.addChoice("Start", colorArray, defaultColor);
-    gd.addChoice("Stop", colorArray, defaultColor);
+    gd.addChoice("End", colorArray, defaultColor);
+    gd.addMessage("Having the same color as the start and end value\n" + 
+		  "results in the full RGB range to be used.");
     gd.addMessage("--- S t d D e v   F I L T E R ---");
     gd.addNumericField("Radius for StdDev (px) [¹]:", stdDevRadius2, 2);
     gd.addMessage("[¹] StdDev radii <= 0 will replaced with an estimated value.");
@@ -158,9 +162,8 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     String lastColor = gd.getNextChoice();
     startHue = Arrays.asList(colorArray).indexOf(firstColor)*60;
     stopHue = Arrays.asList(colorArray).indexOf(lastColor)*60;
-    if (stopHue < startHue) stopHue += 360;
-    hueRange = 360;
-    if (stopHue != startHue) hueRange = stopHue - startHue;
+    if (stopHue <= startHue) stopHue += 360;
+    hueRange = stopHue - startHue;
     stdDevRadius2 = gd.getNextNumber();
     
     // calculate and show the PowerSpectrum of the original image
