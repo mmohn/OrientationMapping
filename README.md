@@ -79,6 +79,6 @@ By default, the radii of the standard deviation filters are estimated by the plu
 ## Refering to this plugin
 If results of the plugin/method are used in a scientific publication, please cite the article:
 
-Ossi Lehtinen, Hannu-Pekka Komsa, Artem Pulkin, Michael Brian Whitwick, Ming-Wei Chen, Tibor Lehnert, Michael J. Mohn, Oleg V. Yazyev, Andras Kis, Ute Kaiser, and Arkady V. Krasheninnikov, *Atomic scale microstructure and properties of Se-deficient two-dimensional MoSe2*, ACS Nano (2015), DOI: 10.1021/acsnano.5b00410
+Ossi Lehtinen, Hannu-Pekka Komsa, Artem Pulkin, Michael Brian Whitwick, Ming-Wei Chen, Tibor Lehnert, Michael J. Mohn, Oleg V. Yazyev, Andras Kis, Ute Kaiser, and Arkady V. Krasheninnikov, *Atomic scale microstructure and properties of Se-deficient two-dimensional MoSe2*, ACS Nano (2015), DOI: [10.1021/acsnano.5b00410](http://dx.doi.org/10.1021/acsnano.5b00410)
 
 
