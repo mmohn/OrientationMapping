@@ -23,7 +23,7 @@ Currently, only 32 bit images can be processed by the plugin.
 ### Fourier filtering
 In this plugin, different grains are located by Fourier filtering of the HRTEM image. Filter masks will be applied to the Fast Fourier Transform (FFT) / Fast Hartley Transform (FHT) of the image, with rotational symmetry based on the symmetry of the analysed structure.
 
-*Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, *e.g.*, thicker samples or samples with nano particles.Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, *e.g.*, thicker samples or samples with nano particles.*
+*Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, e.g., thicker samples or samples with nano particles.Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, e.g., thicker samples or samples with nano particles.*
 
 ### Quantification of the local contrast
 The local contrast of the original and filtered images is quantified using the variance filter (Process > Filters > Variance...) of ImageJ. Subsequent calculation of the square root yields the local standard deviation (StdDev) of the pixel values as a measure for the contrast, analogous to the root mean square (RMS) contrast definition.
@@ -36,7 +36,7 @@ According to the above contrast quantification, the image contrast can be normal
 ## Basic usage
 1. Open the HRTEM image, or select an image which is already open. If necessary, convert it to 32 bit (Image > Type > 32 bit).
 2. Run the "Orientation Mapping" plugin from the "Plugins" menu.
-3. In the first section of the dialog window, enter the rotational symmetry (*m*) of the investigated structure (e.g. 6-fold for a hexagonal structure). The "number of orientations" value *n* determines the number of segments per reflection. In total, this yields a total number of *n\*m* segments for the whole 360 degrees.
+3. In the first section of the dialog window, enter the rotational symmetry (*m*) of the investigated structure (e.g. 6-fold for a hexagonal structure). The "number of orientations" value *n* determines the number of segments per reflection. In total, this yields a total number of *n* \* *m* segments for the whole 360 degrees.
 4. Follow the instructions in the shown FFT of the image. After each step, press the ENTER key to proceed.  
     * In the first step, you will be asked to click on one of the reflections. Your choice will be indicated by a point selection. You may correct the chosen position until you want to continue with the next step.
     * In the second step, the radius for the lower frequency threshold (highpass filter) is selected by clicking in the FFT window. A circular selection will appear if your selection is valid. You may skip this step by pressing ENTER without any selection. In the latter case, no highpass filtering will be performed.
