@@ -17,7 +17,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   This ImageJ plugin allows to create RGB maps for grains with different
   orientations in HRTEM images of polycrystalline samples.
   
-  Version: 1.3 (2015-02-24, 16:09 mmohn)
+  Version: 1.4 (2015-03-17, 17:25 mmohn)
   
   Dependencies:
   - mapping.MapRGB Version 1.0
@@ -39,6 +39,14 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+  If results of the plugin/method are used in a scientific publication, please
+  cite the article:
+  Ossi Lehtinen, Hannu-Pekka Komsa, Artem Pulkin, Michael Brian Whitwick,
+  Ming-Wei Chen, Tibor Lehnert, Michael J. Mohn, Oleg V. Yazyev, Andras Kis,
+  Ute Kaiser, and Arkady V. Krasheninnikov, "Atomic scale microstructure and
+  properties of Se-deficient two-dimensional MoSe2", ACS Nano (2015),
+  DOI: 10.1021/acsnano.5b00410
     
     ----------------------------------------------------------------------------
 */
