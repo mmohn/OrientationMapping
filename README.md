@@ -12,7 +12,7 @@ If necessary, compile the source file "Orientation_Mapping.java" using the "Comp
 
 
 ## Requirements for the input image
-The input image has to show multiple grains of same lattice constant with atomic resolution. In the FFT of the image, the reflections of the individual grains should then be found on a ring.  
+The input image has to show multiple grains of same lattice constant with lattice plane resolution.
 Non-square images and images with other than power-of-two dimensions can be used, as they will be padded to a larger square with power-of-two width.
 
 Currently, only 32 bit images can be processed by the plugin.
