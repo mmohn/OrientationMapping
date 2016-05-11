@@ -17,15 +17,15 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
   This ImageJ plugin allows to create RGB maps for grains with different
   orientations in HRTEM images of polycrystalline samples.
   
-  Version: 1.4 (2015-03-17, 17:25 mmohn)
+  Version: 1.5 (2016-05-11, 12:45 mmohn)
   
   Dependencies:
   - mapping.MapRGB Version 1.0
   - filters.FilterMasks Version 1.1
   - filters.Normalize Version 1.0
-  - filters.Padding Version 1.0
+  - filters.Padding Version 1.1
   
-  Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
+  Copyright (c) 2016 Michael Mohn and Ossi Lehtinen, Ulm University
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -200,6 +200,7 @@ public class Orientation_Mapping implements PlugInFilter, KeyListener, MouseList
     IJ.setTool("point");
     step = 1;
     fhtImp.updateAndDraw();
+    fhtWin.toFront(); // new in v1.5: should *always* bring window to front
   
   } // END of run method
   

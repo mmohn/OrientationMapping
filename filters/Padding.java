@@ -7,9 +7,9 @@ public class Padding {
 
 /* Methods for image padding for the FHT, OrientationMapping
 
-  Version: 1.0 (2015-02-22, 21:01 mmohn)
+  Version: 1.1 (2016-05-11, 12:21 mmohn)
   
-  Copyright (c) 2015 Michael Mohn and Ossi Lehtinen, Ulm University
+  Copyright (c) 2016 Michael Mohn and Ossi Lehtinen, Ulm University
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,6 +37,8 @@ public class Padding {
     int height = ip.getHeight();
     if ( !(width == height) ) isTransformable = false;
     if ( width%2 != 0 ) isTransformable = false;
+    while (width%2 == 0) width = width / 2;
+    if (width != 1) isTransformable = false;
     return !isTransformable;
   }
   
