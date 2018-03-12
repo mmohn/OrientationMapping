@@ -23,7 +23,7 @@ Currently, only 32 bit images can be processed by the plugin.
 ### Fourier filtering
 In this plugin, different grains are located by Fourier filtering of the HRTEM image. Filter masks will be applied to the Fast Fourier Transform (FFT) / Fast Hartley Transform (FHT) of the image, with rotational symmetry based on the symmetry of the analysed structure.
 
-*Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, e.g., thicker samples or samples with nano particles.Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, e.g., thicker samples or samples with nano particles.*
+*Note, that the plugin has been designed and tested with images of atomically thin samples, and may produce unexpected results with images of, e.g., thicker samples or samples with nano particles.*
 
 ### Quantification of the local contrast
 The local contrast of the original and filtered images is quantified using the variance filter (Process > Filters > Variance...) of ImageJ. Subsequent calculation of the square root yields the local standard deviation (StdDev) of the pixel values as a measure for the contrast, analogous to the root mean square (RMS) contrast definition.
