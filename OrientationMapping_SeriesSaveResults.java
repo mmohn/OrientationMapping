@@ -235,7 +235,7 @@ public class OrientationMapping_SeriesSaveResults implements PlugIn {
         new ContrastEnhancer().stretchHistogram(temp, 0.5); // very important for 8bit conversion
         new StackConverter(temp).convertToGray8();
         new ImageConverter(temp).convertRGBStackToRGB();
-        new FileSaver(temp).saveAsTiff(path+"OM_of_"+sliceTitle);
+        new FileSaver(temp).saveAsTiff(path+"OrientationMap_"+i+".tif");
         
         
     }
