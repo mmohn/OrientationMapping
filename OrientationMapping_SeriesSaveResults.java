@@ -17,7 +17,7 @@ public class OrientationMapping_SeriesSaveResults implements PlugIn {
   This version to the OrientationMapping plugin applies a set of pre-defined filter
   masks to a series of TIFF images.
   
-  Version: 0.1 (2019-07-23, 15:56 mmohn)
+  Version: 0.11 (2019-07-24, 11:42 mmohn)
   
   Dependencies:
   - mapping.MapRGB Version 1.0
@@ -53,7 +53,7 @@ public class OrientationMapping_SeriesSaveResults implements PlugIn {
   
   // Program information
   String pluginName = "OrientationMapping_SeriesSaveResults";
-  String pluginVersion = "0.1";
+  String pluginVersion = "0.11";
   
   // Global variables & default values
   boolean doNormalize = true;
